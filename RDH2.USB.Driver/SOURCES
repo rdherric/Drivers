@@ -1,0 +1,63 @@
+# UMDF_VERSION_MAJOR controls the headers that the driver uses.
+# UMDF_VERSION_MAJOR + UMDF_VERSION_MINOR control which version 
+# of UMDF the driver is bound to in the INF and which 
+# update coinstaller it requires (through stampinf). 
+UMDF_VERSION_MAJOR=1
+UMDF_VERSION_MINOR=9
+KMDF_VERSION_MAJOR=1
+KMDF_VERSION_MINOR=9
+
+# Using ATL 7.1
+USE_ATL=1
+ATL_VER=71
+
+# Using MSVCRT
+USE_MSVCRT=1
+
+# Target = RDH2.USB.Driver.DLL
+TARGETNAME=RDH2.USB.Driver
+TARGETTYPE=DYNLINK
+
+# Windows Vista Build environment, support WinXP
+WIN32_WINNT_VERSION=$(LATEST_WIN32_WINNT_VERSION)
+_NT_TARGET_VERSION=$(_NT_TARGET_VERSION_WINXP)
+NTDDI_VERSION=$(LATEST_NTDDI_VERSION)
+
+# Set the warning level high
+MSC_WARNING_LEVEL=/W4 /WX
+
+#pragma warning( disable: 4201 ) // nonstandard extension used : nameless struct/union
+MSC_WARNING_LEVEL=$(MSC_WARNING_LEVEL) /wd4201
+
+C_DEFINES = $(C_DEFINES)  /D_UNICODE /DUNICODE
+
+# DLL Entry functions
+DLLENTRY=_DllMainCRTStartup
+DLLDEF=RDH2.USB.Driver.def
+
+# Include directory
+INCLUDES=$(INCLUDES)
+
+# Installation script generation
+NTTARGETFILE1=$(OBJ_PATH)\$(O)\RDH2USB.inf
+
+# Source Code files
+SOURCES=\
+    RDH2.USB.Driver.rc			\
+    RDH2USBDriver.idl			\
+    dllmain.cpp                 \
+    stdafx.cpp                  \
+    RDH2.USB.Driver.cpp			\
+    Driver.cpp					\
+    Device.cpp
+
+# Statically linked libraries
+TARGETLIBS=\
+        $(SDK_LIB_PATH)\kernel32.lib    \
+        $(SDK_LIB_PATH)\ole32.lib       \
+        $(SDK_LIB_PATH)\oleaut32.lib    \
+        $(SDK_LIB_PATH)\uuid.lib        \
+        $(SDK_LIB_PATH)\user32.lib      \
+        $(SDK_LIB_PATH)\advapi32.lib    \
+        $(SDK_LIB_PATH)\shlwapi.lib     
+

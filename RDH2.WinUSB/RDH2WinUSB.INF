@@ -1,0 +1,152 @@
+; ==================================================
+; © Copyright 2010 RDH2 Science, LLC
+;
+; RDH2WinUSB.inf 
+; Installs the WinUSB driver for applications 
+; developed by RDH2 Science for the SHArK Project.
+; ==================================================
+
+
+; =================================================
+; Basic Information about the Driver
+; =================================================
+[Version]
+Signature=$Windows NT$
+Class=RDH2Device
+ClassGuid={1AEEAB1D-D3AD-4C33-BD70-31E23339AFC0}
+Provider=%RDH2SCI%
+DriverVer=04/20/2010,1.0.0.0
+CatalogFile=RDH2WinUSB.cat
+
+; =================================================
+; Class Installation information
+; =================================================
+[ClassInstall32.NT]
+AddReg=AddRDH2Class
+
+[AddRDH2Class]
+HKR,,,0,%RDH2CLASSNAME%
+HKR,,Icon,,"-20"
+
+
+; =================================================
+; Device Basic Installation information
+; =================================================
+[Manufacturer]
+%RDH2SCI%=RDH2Device_WinUSB,NTx86,NTia64,NTamd64
+
+[RDH2Device_WinUSB.NTx86]
+%LEGODEVNAME%=LEGODevice_Install, USB\VID_0694&PID_0002			; LEGO NXT Brick
+%RDH2DEVNAME%=RDH2Device_Install, USB\VID_224E&PID_1001			; RDH2 Potentiostat
+
+[RDH2Device_WinUSB.NTamd64]
+%LEGODEVNAME%=LEGODevice_Install, USB\VID_0694&PID_0002			; LEGO NXT Brick
+%RDH2DEVNAME%=RDH2Device_Install, USB\VID_224E&PID_1001			; RDH2 Potentiostat
+
+[RDH2Device_WinUSB.NTia64]
+%LEGODEVNAME%=LEGODevice_Install, USB\VID_0694&PID_0002			; LEGO NXT Brick
+%RDH2DEVNAME%=RDH2Device_Install, USB\VID_224E&PID_1001			; RDH2 Potentiostat
+
+
+; =================================================
+; LEGO Device Installation
+; =================================================
+[LEGODevice_Install]
+Include=winusb.inf
+Needs=WINUSB.NT
+
+[LEGODevice_Install.Services]
+Include=winusb.inf
+AddService=WinUSB,0x00000002,WinUSB_ServiceInstall
+
+[LEGODevice_Install.Wdf]
+KmdfService=WINUSB, WinUsb_Install
+
+[LEGODevice_Install.HW]
+AddReg=Dev_AddReg
+
+[LEGODevice_Install.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+
+; =================================================
+; RDH2 Device Installation
+; =================================================
+[RDH2Device_Install]
+Include=winusb.inf
+Needs=WINUSB.NT
+
+[RDH2Device_Install.Services]
+Include=winusb.inf
+AddService=WinUSB,0x00000002,WinUSB_ServiceInstall
+
+[RDH2Device_Install.Wdf]
+KmdfService=WINUSB, WinUsb_Install
+
+[RDH2Device_Install.HW]
+AddReg=Dev_AddReg
+
+[RDH2Device_Install.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+[Dev_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{8AE72999-5567-48AA-B07C-5318DB6A630D}"
+
+
+; ==================================================
+; WinUSB File and Service Installation
+; ==================================================
+[WinUSB_ServiceInstall]
+DisplayName=%WinUSB_SvcDesc%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\WinUSB.sys
+
+[WinUSB_Install]
+KmdfLibraryVersion=1.9
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,"WdfCoInstaller01009.dll,WdfCoInstaller","WinUSBCoInstaller2.dll"
+
+[CoInstallers_CopyFiles]
+WinUSBCoInstaller2.dll
+WdfCoInstaller01009.dll
+
+[DestinationDirs]
+CoInstallers_CopyFiles=11
+
+
+; ==================================================
+; Source Disk Information
+; ==================================================
+[SourceDisksNames]
+1=%RDH2MEDIA%,,,\i386
+2=%RDH2MEDIA%,,,\ia64
+3=%RDH2MEDIA%,,,\amd64
+
+[SourceDisksFiles.x86]
+WinUSBCoInstaller2.dll=1
+WdfCoInstaller01009.dll=1
+
+[SourceDisksFiles.ia64]
+WinUSBCoInstaller2.dll=2
+WdfCoInstaller01009.dll=2
+
+[SourceDisksFiles.amd64]
+WinUSBCoInstaller2.dll=3
+WdfCoInstaller01009.dll=3
+
+
+; ==================================================
+; Strings to use in the INF files
+; ==================================================
+[Strings]
+RDH2SCI="RDH2 Science, LLC"
+RDH2MEDIA="RDH2 USB Driver Installation Media"
+RDH2CLASSNAME="RDH2 Science Devices"
+RDH2DEVNAME="RDH2 Science Potentiostat Device"
+LEGODEVNAME="LEGO NXT Brick Driver by RDH2 Science"
+WinUsb_SvcDesc="WinUSB Driver"

@@ -1,0 +1,9 @@
+; RDH2.USB.Driver.def : Declares the module parameters.
+
+LIBRARY      "RDH2.USB.Driver.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

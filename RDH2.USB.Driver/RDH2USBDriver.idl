@@ -1,0 +1,21 @@
+// RDH2USBDriver.idl : IDL source for RDH2.USB.Driver
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (RDH2USBDriver.tlb) and marshalling code.
+import "wudfddi.idl";
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(32E1C1B5-C14D-4894-B69D-EA17E107907C),
+	oleautomation,
+	nonextensible,
+	helpstring("RDH2.USB IDevice Interface"),
+	pointer_default(unique)
+]
+interface IDevice : IUnknown
+{
+	HRESULT Init([in] IWDFDriver *FxWdfDriver, [in] IWDFDeviceInitialize *FxDeviceInit);
+};

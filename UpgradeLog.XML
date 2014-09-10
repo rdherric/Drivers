@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Drivers">
+</Property><Property Name="Solution File" Value="C:\Users\rdherric\Documents\RDH2\Projects\Drivers\trunk\Drivers.sln">
+</Property><Property Name="User Options File" Value="C:\Users\rdherric\Documents\RDH2\Projects\Drivers\trunk\Drivers.suo">
+</Property><Property Name="Date" Value="Monday, April 12, 2010">
+</Property><Property Name="Time" Value="14:13 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="Drivers.sln" Description="File successfully backed up as C:\Users\rdherric\Documents\RDH2\Projects\Drivers\trunk\Drivers.sln.old">
+</Event><Event ErrorLevel="0" Project="" Source="Drivers.suo" Description="File successfully backed up as C:\Users\rdherric\Documents\RDH2\Projects\Drivers\trunk\Drivers.suo.old">
+</Event><Event ErrorLevel="0" Project="RDH2.Configuration" Source="..\..\RDH2\trunk\RDH2.Configuration\RDH2.Configuration.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="RDH2.Configuration" Source="..\..\RDH2\trunk\RDH2.Configuration\RDH2.Configuration.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="RDH2.Win32" Source="..\..\RDH2\trunk\RDH2.Win32\RDH2.Win32.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="RDH2.Win32" Source="..\..\RDH2\trunk\RDH2.Win32\RDH2.Win32.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="TestDriver" Source="TestDriver\TestDriver.csproj" Description="Project file successfully backed up as C:\Users\rdherric\Documents\RDH2\Projects\Drivers\trunk\TestDriver\TestDriver.csproj.old">
+</Event><Event ErrorLevel="0" Project="TestDriver" Source="TestDriver\TestDriver.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="TestDriver" Source="TestDriver\TestDriver.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="RDH2.LockIn" Source="..\..\RDH2\trunk\RDH2.LockIn\RDH2.LockIn.csproj" Description="Project file successfully backed up as C:\Users\rdherric\Documents\RDH2\Projects\RDH2\trunk\RDH2.LockIn\RDH2.LockIn.csproj.old">
+</Event><Event ErrorLevel="0" Project="RDH2.LockIn" Source="..\..\RDH2\trunk\RDH2.LockIn\RDH2.LockIn.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="RDH2.LockIn" Source="..\..\RDH2\trunk\RDH2.LockIn\RDH2.LockIn.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="RDH2.SHArK.Interface" Source="RDH2.SHArK.Interface\RDH2.SHArK.Interface.csproj" Description="Project file successfully backed up as C:\Users\rdherric\Documents\RDH2\Projects\Drivers\trunk\RDH2.SHArK.Interface\RDH2.SHArK.Interface.csproj.old">
+</Event><Event ErrorLevel="0" Project="RDH2.SHArK.Interface" Source="RDH2.SHArK.Interface\RDH2.SHArK.Interface.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="RDH2.SHArK.Interface" Source="RDH2.SHArK.Interface\RDH2.SHArK.Interface.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="RDH2.USB.Driver" Source="RDH2.USB.Driver\RDH2.USB.Driver.vcproj" Description="Converting project file 'C:\Users\rdherric\Documents\RDH2\Projects\Drivers\trunk\RDH2.USB.Driver\RDH2.USB.Driver.vcproj'.">
+</Event><Event ErrorLevel="1" Project="RDH2.USB.Driver" Source="RDH2.USB.Driver\RDH2.USB.Driver.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="RDH2.USB.Driver" Source="RDH2.USB.Driver\RDH2.USB.Driver.vcproj" Description="VCConvertEngine could not convert attribute CompileAsManaged =  under Tool VCNMakeTool.">
+</Event><Event ErrorLevel="1" Project="RDH2.USB.Driver" Source="RDH2.USB.Driver\RDH2.USB.Driver.vcproj" Description="MSB8012: $(TargetPath) ('C:\Users\rdherric\Documents\RDH2\Projects\Drivers\trunk\RDH2.USB.Driver\Debug\RDH2.USB.Driver.dll') does not match the Linker's OutputFile property value 'Debug\RDH2.USB.Driver.dll' ('C:\Users\rdherric\Documents\RDH2\Projects\Drivers\trunk\Debug\RDH2.USB.Driver.dll') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="0" Project="RDH2.USB.Driver" Source="RDH2.USB.Driver\RDH2.USB.Driver.vcproj" Description="Done converting to new project file 'C:\Users\rdherric\Documents\RDH2\Projects\Drivers\trunk\RDH2.USB.Driver\RDH2.USB.Driver.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="RDH2.USB.Driver" Source="RDH2.USB.Driver\RDH2.USB.Driver.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Drivers.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Drivers.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="TestDriver" Source="TestDriver\TestDriver.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="RDH2.LockIn" Source="..\..\RDH2\trunk\RDH2.LockIn\RDH2.LockIn.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="RDH2.SHArK.Interface" Source="RDH2.SHArK.Interface\RDH2.SHArK.Interface.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

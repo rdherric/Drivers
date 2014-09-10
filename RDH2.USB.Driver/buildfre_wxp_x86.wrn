@@ -1,0 +1,2 @@
+1>warnings in directory c:\users\rdherric\documents\rdh2\projects\drivers\trunk\rdh2.usb.driver
+1>c:\users\rdherric\documents\rdh2\projects\drivers\trunk\rdh2.usb.driver\atls.lib(atlcommodule.obj) : warning LNK4210: .CRT section exists; there may be unhandled static initializers or terminators

@@ -1,0 +1,25 @@
+HKCR
+{
+	RDH2LEGODriver.Driver.1 = s 'Driver Class'
+	{
+		CLSID = s '{7C4AD20F-EAB1-48D2-A92F-691EA9F92FF5}'
+	}
+	RDH2LEGODriver.Driver = s 'Driver Class'
+	{
+		CLSID = s '{7C4AD20F-EAB1-48D2-A92F-691EA9F92FF5}'
+		CurVer = s 'RDH2LEGODriver.Driver.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {7C4AD20F-EAB1-48D2-A92F-691EA9F92FF5} = s 'Driver Class'
+		{
+			ProgID = s 'RDH2LEGODriver.Driver.1'
+			VersionIndependentProgID = s 'RDH2LEGODriver.Driver'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{BE379EA4-3521-40A2-9960-934E13FCBD71}'
+		}
+	}
+}

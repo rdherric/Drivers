@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'RDH2USBDriver'
+		'RDH2.USB.Driver.DLL'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

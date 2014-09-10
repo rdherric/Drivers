@@ -1,0 +1,131 @@
+; ==================================================
+; © Copyright 2010 RDH2 Science, LLC
+;
+; RDH2USB.inf 
+; Installs the USB driver developed by RDH2 Science
+; for the SHArK Project.
+; ==================================================
+
+
+; =================================================
+; Basic Information about the Driver
+; =================================================
+[Version]
+Signature=$Windows NT$
+Class=RDH2Device
+ClassGuid={1AEEAB1D-D3AD-4C33-BD70-31E23339AFC0}
+Provider=%RDH2SCI%
+DriverVer=03/29/2010,1.0.0.0
+;CatalogFile=RDH2USB.cat
+
+[Manufacturer]
+%RDH2SCI%=RDH2Device,NT$ARCH$
+
+
+; =================================================
+; Class Installation information
+; =================================================
+[ClassInstall32.NT]
+AddReg=AddRDH2Class
+
+[AddRDH2Class]
+HKR,,,0,%RDH2CLASSNAME%
+HKR,,Icon,,"-20"
+
+
+; =================================================
+; Driver Installation information
+; =================================================
+[RDH2Device.NT$ARCH$]
+%RDH2DEVNAME%=Device_Install, USB\VID_224E&PID_1001			; RDH2 Potentiostat
+%LEGODEVNAME%=Device_Install, USB\VID_0694&PID_0002			; LEGO NXT Brick
+
+[Device_Install.NT]
+CopyFiles=RDH2DriverCopy
+Include=WINUSB.INF                      ; Import sections from WINUSB.INF
+Needs=WINUSB.NT                         ; Run the CopyFiles & AddReg directives for WinUsb.INF
+
+[RDH2DriverCopy]
+RDH2.USB.Driver.dll
+
+[Device_Install.NT.hw]
+AddReg=Driver_AddReg
+
+[Driver_AddReg]
+HKR,,"LowerFilters",0x00010008,"WinUsb" ; FLG_ADDREG_TYPE_MULTI_SZ | FLG_ADDREG_APPEND
+
+[Device_Install.NT.Services]
+AddService=WUDFRd,0x000001fa,WUDFRD_ServiceInstall  ; flag 0x2 sets this as the service for the device
+AddService=WinUsb,0x000001f8,WinUsb_ServiceInstall  ; this service is installed because it's a filter.
+
+[Device_Install.NT.Wdf]
+KmdfService=WINUSB, WinUsb_Install
+UmdfDispatcher=WinUsb
+UmdfService=RDH2.USB.Driver, RDH2USBDriver_Install
+UmdfServiceOrder=RDH2.USB.Driver
+
+[Device_Install.NT.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+[WinUsb_Install]
+KmdfLibraryVersion=$KMDFVERSION$
+
+[RDH2USBDriver_Install]
+UmdfLibraryVersion=$UMDFVERSION$
+DriverCLSID={8AE72999-5567-48AA-B07C-5318DB6A630D}
+ServiceBinary=%12%\UMDF\RDH2.USB.Driver.dll
+
+[WUDFRD_ServiceInstall]
+DisplayName=%WudfRdDisplayName%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\WUDFRd.sys
+LoadOrderGroup=Base
+
+[WinUsb_ServiceInstall]
+DisplayName=%WinUsb_SvcDesc%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\WinUSB.sys
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,"WudfUpdate_$UMDFCOINSTALLERVERSION$.dll", "WinUsbCoinstaller2.dll", "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[CoInstallers_CopyFiles]
+WudfUpdate_$UMDFCOINSTALLERVERSION$.dll
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+WinUsbCoinstaller2.dll
+
+[DestinationDirs]
+RDH2DriverCopy=12,UMDF			; copy to drivers\UMDF
+CoInstallers_CopyFiles=11
+
+
+; =================================================
+; Driver installation Media
+; =================================================
+[SourceDisksNames]
+1=%RDH2MEDIA%
+
+[SourceDisksFiles]
+RDH2.USB.Driver.dll=1
+WudfUpdate_$UMDFCOINSTALLERVERSION$.dll=1
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1
+WinUsbCoinstaller2.dll=1
+
+
+; ==================================================
+; Strings to use in the INF files
+; ==================================================
+[Strings]
+RDH2SCI="RDH2 Science, LLC"
+RDH2MEDIA="RDH2 USB Driver Installation Media"
+RDH2CLASSNAME="RDH2 Science Devices"
+RDH2DEVNAME="RDH2 Science Potentiostat Device"
+LEGODEVNAME="LEGO NXT Brick Driver by RDH2 Science"
+WudfRdDisplayName="Windows Driver Foundation - User-mode Driver Framework Reflector"
+WinUsb_SvcDesc="WinUSB Driver"
+
